@@ -2,7 +2,7 @@ pipeline:
   run-tests:
     image: node:6.3.0
     commands:
-      - npm i --quiet
+      - cd ./api && npm i --quiet
       - npm test
 
   publish-api-docker:
