@@ -7,12 +7,12 @@ pipeline:
 
   publish-api-docker:
     image: plugins/docker
-    username:
-      from_secret: docker_username
-    password:
-      from_secret: from_secret
-    email:
-      from_secret: docker_email
+#    username:
+#      from_secret: docker_username
+#    password:
+#      from_secret: from_secret
+#    email:
+#      from_secret: docker_email
     repo: n01an/drone-node-api
     tags:
       - latest
