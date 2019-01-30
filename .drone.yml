@@ -10,7 +10,7 @@ pipeline:
     username: ${DOCKER_USERNAME}
     password: ${DOCKER_PASSWORD}
     email: ${DOCKER_EMAIL}
-    repo: anorsich/ds-api
+    repo: n01an/drone-node-api
     tags:
       - latest
     dockerfile: ./api/Dockerfile
