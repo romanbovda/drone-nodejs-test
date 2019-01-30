@@ -13,7 +13,7 @@ pipeline:
     repo: anorsich/ds-api
     tags:
       - latest
-    dockerfile: ./Dockerfile
+    dockerfile: ./api/Dockerfile
     context: ./api/
 
   slack-notification:
