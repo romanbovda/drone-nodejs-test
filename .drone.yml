@@ -5,16 +5,16 @@ pipeline:
       - cd ./api && npm i --quiet
       - npm test
 
-  publish-api-docker:
-    image: plugins/docker
-    username: ${DOCKER_USERNAME}
-    password: ${DOCKER_PASSWORD}
-    email: ${DOCKER_EMAIL}
-    repo: n01an/drone-node-api
-    tags:
-      - latest
-    dockerfile: ./api/Dockerfile
-    context: ./api/
+#  publish-api-docker:
+#    image: plugins/docker
+#    username: ${DOCKER_USERNAME}
+#    password: ${DOCKER_PASSWORD}
+#    email: ${DOCKER_EMAIL}
+#    repo: n01an/drone-node-api
+#    tags:
+#      - latest
+#    dockerfile: ./api/Dockerfile
+#    context: ./api/
 
   slack-notification:
     image: plugins/slack
