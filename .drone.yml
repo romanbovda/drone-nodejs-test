@@ -19,6 +19,6 @@ pipeline:
 
   deployment:
     image: plugins/slack
-    webhook: https://hooks.slack.com/services/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
+    webhook: ${WEBHOOK}
     channel: general
     icon_emoji: ":rocket:"
