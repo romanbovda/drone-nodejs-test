@@ -14,8 +14,9 @@ pipeline:
     dockerfile: ./api/Dockerfile
     context: ./api/
 
-#  slack_notification:
-#    image: plugins/slack
-#    webhook: ${WEBHOOK}
-#    channel: general
-#    icon_emoji: ":rocket:"
+  slack_notification:
+    image: plugins/slack
+    webhook:
+      from_secret: WEBHOOK
+    channel: general
+    icon_emoji: ":rocket:"
