@@ -17,7 +17,6 @@ pipeline:
     dockerfile: ./api/Dockerfile
     context: ./api/
 
-
   deployment:
     image: plugins/slack
     webhook: ${webhook2}
