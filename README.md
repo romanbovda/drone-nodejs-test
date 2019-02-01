@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/jezen/is-thirteen.svg?branch=master)](https://travis-ci.org/jezen/is-thirteen) 
-[![Join us on Gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/gytdau/is-thirteen)
+[![Build Status](https://drone.barbatec.com/api/badges/romanbovda/drone-nodejs-test/status.svg?branch=master)]
 
 An npm package to check if a number is equal to 13.
 
