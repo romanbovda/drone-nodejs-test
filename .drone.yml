@@ -19,7 +19,7 @@ pipeline:
 
   slack-notification:
     image: plugins/slack
-    webhook: {$WEBHOOK}
+    webhook: ${WEBHOOK}
     username: drone-ci
     channel: general
     icon_emoji: ":rocket:"
