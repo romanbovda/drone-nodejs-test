@@ -1,16 +1,13 @@
 pipeline:
-#  run-tests:
-#    image: node:6.3.0
-#    commands:
-#      - cd ./api && npm i --quiet
-#      - npm test
-
+  run-tests:
+    image: node:6.3.0
+    commands:
+      - cd ./api && npm i --quiet
+      - npm test
 
   publish-api-docker:
     image: plugins/docker
-    username: ${DOCKER_USERNAME}
-    password: ${DOCKER_PASSWORD}
-    email: ${DOCKER_EMAIL}
+    secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
     repo: n01an/drone-node-api
     tags:
       - latest
@@ -19,10 +16,12 @@ pipeline:
 
   slack_notification:
     image: plugins/slack
-    webhook: ${WEBHOOK}
+    secrets: [ slack_webhook ]
     channel: general
-    icon_emoji: ":rocket:"
-
-
-
-
+    link_names: true
+    template:  >
+      {{#success build.status}}
+        build {{build.number}} succeeded. Good job. <@r.bovda>
+      {{else}}
+        build {{build.number}} failed. Fix me please. <@devops>
+      {{/success}}
