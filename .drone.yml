@@ -21,9 +21,9 @@ pipeline:
     link_names: true
     template:  >
       {{#success build.status}}
-        build {{build.number}} succeeded. Good job. <@r.bovda>
+        build {{build.link}} succeeded. Good job. <@r.bovda>
       {{else}}
-        build {{build.number}} failed. Fix me please. <#devops>
+        build {{build.link}} failed. Fix me please, I want to live. <@devops>
       {{/success}}
     when:
       status: [ success, failure ]
