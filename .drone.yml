@@ -20,6 +20,7 @@ pipeline:
       webhook:
         from_secret: WEBHOOK
       channel: general
+      link_names: true
       template:  >
         {{#success build.status}}
           build {{build.number}} succeeded. Good job. <@r.bovda>
