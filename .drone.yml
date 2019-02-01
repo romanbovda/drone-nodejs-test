@@ -19,7 +19,9 @@ pipeline:
 
   deployment:
     image: plugins/slack
-    webhook: ${WEBHOOK}
-    username: drone-ci
-    channel: general
-    icon_emoji: ":rocket:"
+    settings:
+      webhook:
+        from_secret: webhook
+      username: drone-ci
+      channel: general
+      icon_emoji: ":rocket:"
