@@ -19,8 +19,6 @@ pipeline:
 
   deployment:
     image: plugins/slack
-    settings:
-      webhook: https://hooks.slack.com/services/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
-      username: drone-ci
-      channel: general
-      icon_emoji: ":rocket:"
+    webhook: https://hooks.slack.com/services/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
+    channel: general
+    icon_emoji: ":rocket:"
