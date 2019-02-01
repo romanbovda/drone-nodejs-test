@@ -16,7 +16,7 @@ pipeline:
 
   slack_notification:
     image: plugins/slack
-    secrets: [ WEBHOOK ]
+    secrets: [ slack_webhook ]
     channel: general
     link_names: true
 #      template:  >
