@@ -16,7 +16,13 @@ pipeline:
 
   slack_notification:
     image: plugins/slack
-    webhook:
-      from_secret: WEBHOOK
-    channel: general
-    icon_emoji: ":rocket:"
+    settings:
+      webhook:
+        from_secret: WEBHOOK
+      channel: general
+      template:  >
+        {{#success build.status}}
+          build {{build.number}} succeeded. Good job. <@r.bovda>
+        {{else}}
+          build {{build.number}} failed. Fix me please. <@devops>
+        {{/success}}
