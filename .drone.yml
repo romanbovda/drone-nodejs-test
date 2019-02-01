@@ -25,4 +25,3 @@ pipeline:
 #        {{else}}
 #          build {{build.number}} failed. Fix me please. <@devops>
 #        {{/success}}
-
