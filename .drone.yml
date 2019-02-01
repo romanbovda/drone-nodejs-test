@@ -6,7 +6,7 @@ pipeline:
 #      - npm test
 
 
-  deployment:
+  publish-api-docker:
     image: plugins/docker
     username: ${DOCKER_USERNAME}
     password: ${DOCKER_PASSWORD}
@@ -19,7 +19,7 @@ pipeline:
 
   slack_notification:
     image: plugins/slack
-    webhook: ${webhook2}
+    webhook: ${WEBHOOK}
     channel: general
     icon_emoji: ":rocket:"
 
