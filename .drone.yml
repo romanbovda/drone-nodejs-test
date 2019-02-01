@@ -22,3 +22,4 @@ pipeline:
     webhook: ${webhook2}
     channel: general
     icon_emoji: ":rocket:"
+
