@@ -17,7 +17,7 @@ pipeline:
 #    dockerfile: ./api/Dockerfile
 #    context: ./api/
 
-  slack-notification:
+  deployment:
     image: plugins/slack
     webhook: ${WEBHOOK}
     username: drone-ci
