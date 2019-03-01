@@ -45,6 +45,6 @@ steps:
       {{/success}}
     when:
       status: [ success, failure ]
-    depends_on:
-      - amd
-      - arm64
+  depends_on:
+  - amd
+  - arm64
