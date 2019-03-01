@@ -1,10 +1,36 @@
-pipeline:
+kind: pipline
+name: amd
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  run-tests:
+    image: node:6.3.0
+    commands:
+      - cd ./api && npm i --quiet
+      - npm test
+---
+kind: pipline
+name: arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
   run-tests:
     image: node:6.3.0
     commands:
       - cd ./api && npm i --quiet
       - npm test
 
+---
+kind: pipeline
+name: publish
+
+steps:
   publish-api-docker:
     image: plugins/docker
     secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
@@ -27,3 +53,7 @@ pipeline:
       {{/success}}
     when:
       status: [ success, failure ]
+
+  depends_on:
+    - amd
+    - arm64
