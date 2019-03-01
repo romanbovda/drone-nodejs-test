@@ -6,7 +6,7 @@ platform:
   arch: amd64
 
 steps:
-  run-tests:
+  - run-tests:
     image: node:6.3.0
     commands:
       - cd ./api && npm i --quiet
@@ -20,7 +20,7 @@ platform:
   arch: arm64
 
 steps:
-  run-tests:
+  - run-tests:
     image: node:6.3.0
     commands:
       - cd ./api && npm i --quiet
@@ -31,7 +31,7 @@ kind: pipeline
 name: publish
 
 steps:
-  publish-api-docker:
+  - publish-api-docker:
     image: plugins/docker
     secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
     repo: n01an/drone-node-api
@@ -40,7 +40,7 @@ steps:
     dockerfile: ./api/Dockerfile
     context: ./api/
 
-  slack_notification:
+  - slack_notification:
     image: plugins/slack
     secrets: [ slack_webhook ]
     channel: general
