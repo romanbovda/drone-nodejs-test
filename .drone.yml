@@ -14,19 +14,19 @@ steps:
       - npm test
 
 ---
-kind: pipline
-name: arm64
+- kind: pipline
+  name: arm64
 
-platform:
-  os: linux
-  arch: arm64
+- platform:
+    os: linux
+    arch: arm64
 
-steps:
-  - name: run-tests
-    image: node:6.3.0
-    commands:
-      - cd ./api && npm i --quiet
-      - npm test
+- steps:
+    - name: run-tests
+      image: node:6.3.0
+      commands:
+        - cd ./api && npm i --quiet
+        - npm test
 
 ---
 kind: pipeline
