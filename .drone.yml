@@ -33,7 +33,7 @@ kind: pipeline
 name: publish
 
 steps:
-  - publish-api-docker:
+  - name: publish-api-docker
     image: plugins/docker
     secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
     repo: n01an/drone-node-api
@@ -42,7 +42,7 @@ steps:
     dockerfile: ./api/Dockerfile
     context: ./api/
 
-  - slack_notification:
+  - name: slack_notification
     image: plugins/slack
     secrets: [ slack_webhook ]
     channel: general
