@@ -41,7 +41,9 @@ steps:
       - latest
     dockerfile: ./api/Dockerfile
     context: ./api/
-
+    depends_on:
+      - amd
+      - arm64
   - name: slack_notification
     image: plugins/slack
     secrets: [ slack_webhook ]
