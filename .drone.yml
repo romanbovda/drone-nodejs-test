@@ -1,50 +1,50 @@
-- kind: pipline
-  name: amd
+kind: pipline
+name: amd
 
-- platform:
-    os: linux
-    arch: amd64
+platform:
+  os: linux
+  arch: amd64
 
-- steps:
-    - name: run-tests
-      image: node:6.3.0
-      commands:
-        - cd ./api && npm i --quiet
-        - npm test
-
----
-- kind: pipline
-  name: arm64
-
-- platform:
-    os: linux
-    arch: arm64
-
-- steps:
-    - name: run-tests
-      image: node:6.3.0
-      commands:
-        - cd ./api && npm i --quiet
-        - npm test
+steps:
+  name: run-tests
+  image: node:6.3.0
+  commands:
+    cd ./api && npm i --quiet
+    npm test
 
 ---
-- kind: pipeline
-  name: publish
+kind: pipline
+name: arm64
 
-- steps:
-    - name: slack_notification
-      image: plugins/slack
-      secrets: [ slack_webhook ]
-      channel: general
-      link_names: true
-      template: >
-        {{#success build.status}}
-          build {{build.link}} succeeded. Good job. <@r.bovda>
-        {{else}}
-          build {{build.link}} failed. Fix me please, I want to live. <@devops>
-        {{/success}}
-      when:
-        status: [ success, failure ]
-    depends_on:
-      - amd
-      - arm64
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+  name: run-tests
+  image: node:6.3.0
+  commands:
+    cd ./api && npm i --quiet
+    npm test
+
+---
+kind: pipeline
+name: publish
+
+steps:
+  name: slack_notification
+  image: plugins/slack
+  secrets: [ slack_webhook ]
+  channel: general
+  link_names: true
+  template: >
+    {{#success build.status}}
+      build {{build.link}} succeeded. Good job. <@r.bovda>
+    {{else}}
+      build {{build.link}} failed. Fix me please, I want to live. <@devops>
+    {{/success}}
+  when:
+    status: [ success, failure ]
+  depends_on:
+    amd
+    arm64
