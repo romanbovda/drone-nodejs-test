@@ -1,3 +1,4 @@
+---
 kind: pipline
 name: amd
 
@@ -6,11 +7,12 @@ platform:
   arch: amd64
 
 steps:
-  - run-tests:
+  - name: run-tests
     image: node:6.3.0
     commands:
       - cd ./api && npm i --quiet
       - npm test
+
 ---
 kind: pipline
 name: arm64
@@ -20,7 +22,7 @@ platform:
   arch: arm64
 
 steps:
-  - run-tests:
+  - name: run-tests
     image: node:6.3.0
     commands:
       - cd ./api && npm i --quiet
@@ -45,7 +47,7 @@ steps:
     secrets: [ slack_webhook ]
     channel: general
     link_names: true
-    template:  >
+    template: >
       {{#success build.status}}
         build {{build.link}} succeeded. Good job. <@r.bovda>
       {{else}}
@@ -53,7 +55,6 @@ steps:
       {{/success}}
     when:
       status: [ success, failure ]
-
-  depends_on:
-    - amd
-    - arm64
+    depends_on:
+      - amd
+      - arm64
